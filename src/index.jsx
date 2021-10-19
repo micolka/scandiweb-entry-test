@@ -1,13 +1,14 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
+import { PLPWithData } from './pages';
+import { Header } from './components';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
@@ -16,8 +17,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
+    <Header />
     <ApolloProvider client={client}>
-      <App />
+      <PLPWithData />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
