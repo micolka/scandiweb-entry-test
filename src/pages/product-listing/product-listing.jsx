@@ -1,6 +1,8 @@
 import React from 'react';
 import './product-listing.css';
 
+import { ProductCard } from '../../components';
+
 import {
   gql
 } from "@apollo/client";
@@ -19,17 +21,7 @@ class PLP extends React.Component {
       <div className="plp-wrapper">
         <span className="plp-category-name">Category: {category.name}</span>
         <div className="plp-products_container">
-          {category.products.map(((el) => {
-            return <div key={el.id} className="product-card_wrapper">
-                <div className="product-image">
-                  <img src={el.gallery[0]} alt={el.name} />
-                </div>
-                <div className="product-content">
-                  <span className="product-name">{el.name}</span>
-                  <span className="product-price">${el.prices[0].amount}</span>
-                </div>
-              </div>
-          }))}
+          {category.products.map(((el) => <ProductCard product={el} key={el.id} />))}
         </div>
       </div>
     );

@@ -1,3 +1,4 @@
-import Header from "./header/header";
+import Header from './header/header';
+import ProductCard from "./product-card/card"
 
-export { Header };
+export { Header, ProductCard };
