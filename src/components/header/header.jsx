@@ -2,6 +2,7 @@ import './header.css';
 import logo from '../../assets/images/a-logo.png'
 
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import { Currency } from '../index'
 
@@ -19,7 +20,9 @@ class Header extends React.Component {
               </ul>
             </div>
             <div className="header-logo_wrapper">
-              <img src={logo} alt="a-logo" />
+              <Link to="/">
+                <img src={logo} alt="a-logo" />
+              </Link>              
             </div>
             <div className="header-actions_wrapper">
               <Currency />

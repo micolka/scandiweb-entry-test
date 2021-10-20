@@ -1,17 +1,14 @@
-import * as React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-import { PLPWithData } from './pages';
-import { Header } from './components';
+import App from './App';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
@@ -22,8 +19,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <Header />
-        <PLPWithData />
+        <BrowserRouter>
+          <App/>
+        </BrowserRouter>
       </ApolloProvider>
     </Provider>
   </React.StrictMode>,

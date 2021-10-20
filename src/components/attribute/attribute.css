@@ -1,0 +1,38 @@
+.attribute_wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.attribute_name {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.attribute-items_wrapper {
+    display: flex;
+    flex-direction: row;
+    column-gap: 12px;
+}
+
+.attribute-item_container {
+    height: 45px;
+    width: 63px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.attribute-item_name {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: uppercase;
+    
+}
+

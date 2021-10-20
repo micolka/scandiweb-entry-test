@@ -3,32 +3,49 @@ import cart from '../../assets/images/cart.png'
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { CURRENCIES_SYMBOLS } from '../../constants';
 import { getCurrency } from '../../redux/selectors';
 
 class ProductCard extends React.Component {
 
-  state = {
-    hideCartIcon: true,
+  constructor(props) {
+    super(props);
+    this.state = {
+      hideCartIcon: true,
+      allowRedirect: false,
+    }
   }
 
   handleMouseInteraction(param) {
     if (this.props.product.inStock) this.setState({hideCartIcon: param});
-  }   
+  }
+  
+  handleShowProduct() {
+    this.setState({ allowRedirect: true });    
+  }
+
+  handleAddToCart(e) {
+    e.stopPropagation();
+    console.log('cart');
+  }
 
   render () {
     const { product } = this.props;
     const currencySymbol = CURRENCIES_SYMBOLS[this.props.currency];
     const { amount } = product.prices.find(el => el.currency === this.props.currency)
 
-    console.log(product);
-
+    if (this.state.allowRedirect) {
+      return <Redirect to={`/product/${product.id}`} />
+    };
+    
     return (
       <div 
-        className={`product-card_wrapper ${!product.inStock ? 'no-hover-effects' : ''}`}
+        className="product-card_wrapper"
         onMouseEnter={() => {this.handleMouseInteraction(false)}}
         onMouseLeave={() => {this.handleMouseInteraction(true)}}
+        onClick={() => {this.handleShowProduct()}}
       >
         <div className="product-image">
           <img src={product.gallery[0]} alt={product.name} />
@@ -38,12 +55,14 @@ class ProductCard extends React.Component {
           <span className="product-price">{`${currencySymbol}${amount}`}</span>
         </div>
         <div className={`cart-icon_wrapper ${this.state.hideCartIcon ? 'hide-cart-icon' : 'show-cart-icon'}`}>
-          <img src={cart} alt="cart" />
+          <img src={cart} alt="cart" onClick={(e) => {this.handleAddToCart(e)}}/>
         </div>
-        {!product.inStock && <>
-          <div className="out-of-stock_overlay"></div>
-          <div className="out-of-stock_message"><span>out of stock</span></div>
-        </>}
+        {
+          !product.inStock && <>
+            <div className="out-of-stock_overlay"></div>
+            <div className="out-of-stock_message"><span>out of stock</span></div>
+          </>
+        }
       </div>
     );
   }

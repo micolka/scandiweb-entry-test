@@ -9,7 +9,6 @@ import { ProductCard } from '../../components';
 class PLP extends React.Component {
 
   render () {
-    // console.log(this.props.data)
     const {error, loading, category} = this.props.data;
 
     if (error) return <div>Error: {error}</div>
