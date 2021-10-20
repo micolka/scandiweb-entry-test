@@ -15,6 +15,12 @@
     transition: all 0.15s ease-in;
 }
 
+.no-hover-effects,
+.no-hover-effects:hover {
+    cursor: auto;
+    box-shadow: none;
+}
+
 .product-image {
     position: relative;
     width: 354px;
@@ -38,6 +44,10 @@
     justify-content: space-between;
 }
 
+.grey-text {
+    color: #8D8F9A;
+}
+
 .product-price {
     font-family: Raleway;
     font-size: 18px;
@@ -49,7 +59,6 @@
     font-weight: 300;
     font-size: 18px;
     line-height: 160%;
-    
 }
 
 .cart-icon_wrapper {
@@ -66,4 +75,29 @@
 
 .show-cart-icon {
     opacity: 1;
+}
+
+.out-of-stock_overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #8D8F9A;
+    opacity: 0.1;
+}
+
+.out-of-stock_message {
+    position: absolute;
+    margin: 0 auto;
+    margin-top: 14px;
+    width: 354px;
+    height: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8D8F9A;
+
+    font-family: Raleway;
+    font-size: 24px;
+    line-height: 160%;
+    text-transform: uppercase;
 }
