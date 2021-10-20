@@ -2,6 +2,10 @@ import './card.css';
 import cart from '../../assets/images/cart.png'
 
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { CURRENCIES_SYMBOLS } from '../../constants';
+import { getCurrency } from '../../redux/selectors';
 
 class ProductCard extends React.Component {
 
@@ -12,6 +16,8 @@ class ProductCard extends React.Component {
 
   render () {
     const { product } = this.props;
+    const currencySymbol = CURRENCIES_SYMBOLS[this.props.currency];
+    const { amount } = product.prices.find(el => el.currency === this.props.currency)
 
     return (
       <div 
@@ -24,7 +30,7 @@ class ProductCard extends React.Component {
         </div>
         <div className="product-content">
           <span className="product-name">{product.name}</span>
-          <span className="product-price">${product.prices[0].amount}</span>
+          <span className="product-price">{`${currencySymbol}${amount}`}</span>
         </div>
         <div className={`cart-icon_wrapper ${this.state.hideCartIcon ? 'hide-cart-icon' : 'show-cart-icon'}`}>
           <img src={cart} alt="cart" />
@@ -35,4 +41,6 @@ class ProductCard extends React.Component {
   
 }
 
-export default ProductCard;
+const mapStateToProps = state => getCurrency(state);
+
+export default connect(mapStateToProps)(ProductCard);

@@ -1,17 +1,15 @@
-import React from 'react';
 import './product-listing.css';
 
-import { ProductCard } from '../../components';
-
-import {
-  gql
-} from "@apollo/client";
+import React from 'react';
+import { gql } from "@apollo/client";
 import { graphql } from '@apollo/client/react/hoc';
+
+import { ProductCard } from '../../components';
 
 class PLP extends React.Component {
 
   render () {
-    console.log(this.props.data)
+    // console.log(this.props.data)
     const {error, loading, category} = this.props.data;
 
     if (error) return <div>Error: {error}</div>
@@ -29,22 +27,22 @@ class PLP extends React.Component {
 }
 
 const withCategoriesQuery = graphql(gql`
-query categories {
-  category {
-    name
-    products {
-      id
+  query categories {
+    category {
       name
-      inStock
-      gallery
-      category
-      prices {
-        currency
-        amount
+      products {
+        id
+        name
+        inStock
+        gallery
+        category
+        prices {
+          currency
+          amount
+        }
       }
     }
   }
-}
 `);
 
 const PLPWithData = withCategoriesQuery(PLP)

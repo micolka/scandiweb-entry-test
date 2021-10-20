@@ -1,0 +1,10 @@
+.currency_select {
+    border: none;
+    background: #ffffff;
+    outline: none;
+
+    font-family: Raleway;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160%;
+}

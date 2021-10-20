@@ -3,6 +3,8 @@ import logo from '../../assets/images/a-logo.png'
 
 import React from 'react';
 
+import { Currency } from '../index'
+
 class Header extends React.Component {
 
     render () {
@@ -20,7 +22,7 @@ class Header extends React.Component {
               <img src={logo} alt="a-logo" />
             </div>
             <div className="header-actions_wrapper">
-              <div>currency</div>
+              <Currency />
               <div>cart</div>
             </div>
         </div>
