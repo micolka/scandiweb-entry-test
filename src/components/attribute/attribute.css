@@ -29,10 +29,10 @@
 }
 
 .attribute-item_name {
+    padding: 10px;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 18px;
     text-transform: uppercase;
-    
 }
 

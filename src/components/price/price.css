@@ -1,0 +1,21 @@
+.product-price_wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.product-price_text {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.product-price_amount {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 18px;
+}

@@ -5,7 +5,7 @@ import { gql } from "@apollo/client";
 import { graphql } from '@apollo/client/react/hoc';
 import { withRouter } from 'react-router-dom';
 
-import { Attribute } from '../../components'
+import { Attribute, Price } from '../../components'
 
 class ProductDescription extends React.Component {
 
@@ -22,8 +22,8 @@ class ProductDescription extends React.Component {
     if (error) return <div>Error: {error}</div>
     if (loading) return <div>isLoading...</div>
 
-    const { gallery, name, brand, attributes } = product;
-
+    const { gallery, name, brand, attributes, prices } = product;
+    
     return (
       <div className="pdp-wrapper">
         <div className="pdp-gallery_small">
@@ -44,6 +44,7 @@ class ProductDescription extends React.Component {
           <div className="pdp-product_attributes">
             {attributes.map(attribute => <Attribute attribute={attribute} key={attribute.id} />)}
           </div>
+          <Price prices={prices} />
         </div>
       </div>
     );
