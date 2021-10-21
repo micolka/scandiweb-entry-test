@@ -10,7 +10,6 @@ class Price extends React.Component {
 
   render () {
     const { prices, currency } = this.props;
-    console.log(this.props);
     const currencySymbol = CURRENCIES_SYMBOLS[currency];
     const { amount } = prices.find(el => el.currency === this.props.currency)
 

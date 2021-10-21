@@ -16,13 +16,18 @@ class ProductDescription extends React.Component {
     }
   }
 
+  handleAddToCart() {
+    console.log('add to cart');
+  }
+
   render () {
     const { error, loading, product } = this.props.data;
 
     if (error) return <div>Error: {error}</div>
     if (loading) return <div>isLoading...</div>
 
-    const { gallery, name, brand, attributes, prices } = product;
+    const { gallery, name, brand, attributes, prices, description } = product;
+    const innerDescription = { __html: description };
     
     return (
       <div className="pdp-wrapper">
@@ -45,13 +50,15 @@ class ProductDescription extends React.Component {
             {attributes.map(attribute => <Attribute attribute={attribute} key={attribute.id} />)}
           </div>
           <Price prices={prices} />
+          <button className="add-product_btn" onClick={() => {this.handleAddToCart()}}>add to cart</button>
+          <div className="pdp-product_description" dangerouslySetInnerHTML={innerDescription}></div>
         </div>
       </div>
     );
   }
 }
 
-const withCategoriesQuery = graphql(gql`
+const withProductQuery = graphql(gql`
   query product($id: String!) {
     product(id: $id) {
       id
@@ -87,7 +94,7 @@ const withCategoriesQuery = graphql(gql`
   }
 );
 
-const PDPWithData = withCategoriesQuery(ProductDescription);
+const PDPWithData = withProductQuery(ProductDescription);
 
 
 export default withRouter(PDPWithData);

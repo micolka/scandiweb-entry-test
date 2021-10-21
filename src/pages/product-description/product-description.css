@@ -74,3 +74,33 @@
     row-gap: 20px;
     margin-bottom: 40px;
 }
+
+.add-product_btn {
+    width: 290px;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    background-color: #5ECE7B;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+}
+
+.add-product_btn:hover {
+    transition: all 0.15s ease-in;
+    background-color: #25803d;
+}
+
+.pdp-product_description {
+    width: 290px;
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    font-size: 16px;
+    line-height: 159.96%;
+}
