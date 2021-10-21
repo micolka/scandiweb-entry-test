@@ -6,3 +6,6 @@ export const getCategories = store =>
 
 export const getCheckedAttributes = store => 
   store && store.checkedAttributes ? store.checkedAttributes : '';
+
+export const getProductsFromCart = store => 
+  store && store.cart ? store.cart : '';

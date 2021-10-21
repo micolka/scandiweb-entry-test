@@ -4,7 +4,7 @@ import logo from '../../assets/images/a-logo.png'
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import { Currency, NavMenu } from '../index'
+import { MiniCart, Currency, NavMenu } from '../index'
 
 class Header extends React.Component {
 
@@ -20,7 +20,7 @@ class Header extends React.Component {
           </div>
           <div className="header-actions_wrapper">
             <Currency />
-            <div>cart</div>
+            <MiniCart />
           </div>
       </div>
     );

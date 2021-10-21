@@ -114,3 +114,13 @@
     font-size: 16px;
     line-height: 159.96%;
 }
+
+.product-price_text {
+    padding-bottom: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+}

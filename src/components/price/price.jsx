@@ -15,7 +15,6 @@ class Price extends React.Component {
 
     return (
       <div className="product-price_wrapper"> 
-        <span className="product-price_text">price:</span>
         <span className="product-price_amount">{`${currencySymbol}${amount}`}</span>
       </div>
     );

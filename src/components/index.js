@@ -4,5 +4,6 @@ import Header from './header/header';
 import NavMenu from './nav-menu/nav-menu';
 import Price from './price/price';
 import ProductCard from './product-card/card';
+import MiniCart from './minicart/minicart';
 
-export { Attribute, Currency, Header, NavMenu, Price, ProductCard };
+export { Attribute, MiniCart, Currency, Header, NavMenu, Price, ProductCard };

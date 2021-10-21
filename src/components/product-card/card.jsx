@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import { addProductToCart } from '../../redux/actions';
 import { CURRENCIES_SYMBOLS } from '../../constants';
 import { getCurrency } from '../../redux/selectors';
 
@@ -28,7 +29,7 @@ class ProductCard extends React.Component {
 
   handleAddToCart(e) {
     e.stopPropagation();
-    console.log('cart');
+    this.props.addProductToCart(this.props.product);
   }
 
   render () {
@@ -69,6 +70,8 @@ class ProductCard extends React.Component {
   
 }
 
-const mapStateToProps = state => getCurrency(state);
+const mapStateToProps = state => {
+  return getCurrency(state)
+};
 
-export default connect(mapStateToProps)(ProductCard);
+export default connect(mapStateToProps, {addProductToCart})(ProductCard);

@@ -1,12 +1,15 @@
 import './product-description.css';
 
 import React from 'react';
+import { connect } from 'react-redux';
 import { gql } from "@apollo/client";
 import { graphql } from '@apollo/client/react/hoc';
 import { withRouter } from 'react-router-dom';
 
-import { Attribute, Price } from '../../components'
-
+import { Attribute, Price } from '../../components';
+import { addProductToCart } from '../../redux/actions';
+import { getCheckedAttributes } from '../../redux/selectors';
+ 
 class ProductDescription extends React.Component {
 
   constructor(props) {
@@ -17,7 +20,8 @@ class ProductDescription extends React.Component {
   }
 
   handleAddToCart() {
-    console.log('add to cart');
+    const { data,checkedAttributes } = this.props;
+    this.props.addProductToCart({...data.product, checkedAttributes});
   }
 
   render () {
@@ -25,8 +29,6 @@ class ProductDescription extends React.Component {
 
     if (error) return <div>Error: {error}</div>
     if (loading) return <div>isLoading...</div>
-
-    // console.log(this.props);
 
     const { gallery, inStock, name, brand, attributes, prices, description } = product;
     const innerDescription = { __html: description };
@@ -51,6 +53,7 @@ class ProductDescription extends React.Component {
           {inStock && <div className="pdp-product_attributes">
             {attributes.map(attribute => <Attribute attribute={attribute} key={attribute.id} />)}
           </div>}
+          <span className="product-price_text">price:</span>
           <Price prices={prices} />
           <button 
             className={`add-product_btn ${!inStock && 'disabled_btn'}` }
@@ -103,6 +106,10 @@ const withProductQuery = graphql(gql`
 );
 
 const PDPWithData = withProductQuery(ProductDescription);
+const PDPWithRouter = withRouter(PDPWithData);
 
+const mapStateToProps = state => {
+  return getCheckedAttributes(state)
+};
 
-export default withRouter(PDPWithData);
+export default connect(mapStateToProps, {addProductToCart})(PDPWithRouter);
