@@ -26,7 +26,9 @@ class ProductDescription extends React.Component {
     if (error) return <div>Error: {error}</div>
     if (loading) return <div>isLoading...</div>
 
-    const { gallery, name, brand, attributes, prices, description } = product;
+    // console.log(this.props);
+
+    const { gallery, inStock, name, brand, attributes, prices, description } = product;
     const innerDescription = { __html: description };
     
     return (
@@ -46,11 +48,17 @@ class ProductDescription extends React.Component {
         <div className="pdp-product_info">
           <span className="pdp-product_name">{name}</span>
           <span className="pdp-product_brand">{brand}</span>
-          <div className="pdp-product_attributes">
+          {inStock && <div className="pdp-product_attributes">
             {attributes.map(attribute => <Attribute attribute={attribute} key={attribute.id} />)}
-          </div>
+          </div>}
           <Price prices={prices} />
-          <button className="add-product_btn" onClick={() => {this.handleAddToCart()}}>add to cart</button>
+          <button 
+            className={`add-product_btn ${!inStock && 'disabled_btn'}` }
+            onClick={() => {this.handleAddToCart()}}
+            disabled={!inStock}
+          >
+            {inStock ? 'add to cart' : 'out of stock'}
+          </button>
           <div className="pdp-product_description" dangerouslySetInnerHTML={innerDescription}></div>
         </div>
       </div>

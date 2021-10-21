@@ -22,6 +22,7 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 120%;
+    border-bottom: #ffffff solid 2px;
 }
 
 .header-menu_item:hover {

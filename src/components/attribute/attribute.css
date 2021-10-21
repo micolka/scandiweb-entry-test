@@ -26,6 +26,19 @@
     justify-content: center;
     align-items: center;
     border: 1px solid black;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+}
+
+.attribute-item_container:hover {
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);
+    transition: all 0.15s ease-in;
+}
+
+.checked_attribute {
+    background-color: black;
+    color: white;
+    border: 1px solid red;
 }
 
 .attribute-item_name {

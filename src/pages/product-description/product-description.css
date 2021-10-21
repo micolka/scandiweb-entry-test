@@ -97,6 +97,16 @@
     background-color: #25803d;
 }
 
+.disabled_btn {
+    cursor: default;
+    background-color: #848b86;
+}
+
+.disabled_btn:hover {
+    cursor: default;
+    background-color: #848b86;
+}
+
 .pdp-product_description {
     width: 290px;
     font-family: 'Roboto', sans-serif;
