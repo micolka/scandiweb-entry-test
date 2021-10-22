@@ -3,29 +3,32 @@ import cartEmpty from '../../assets/images/cart-empty.png'
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
 
-import { getProductsFromCart } from '../../redux/selectors';
+import { getProductsFromCart, getAppSettings } from '../../redux/selectors';
+import { toggleMiniCart } from '../../redux/actions';
+import { MiniCartLayout } from '../../components';
 
 class MiniCart extends React.Component {
 
   render () {
-    const {  selectedProducts } = this.props;
-    // console.log(selectedProducts);
+    const {  selectedProducts, isMiniCartOpened } = this.props;
 
     return (
       <div className="cart-component_wrapper">
-        <Link to="/cart">
-          <img src={cartEmpty} alt="cart" /> 
-          <div className="goods-counter">
-            <span>{selectedProducts.length}</span>
-          </div>
-        </Link>
+        <img src={cartEmpty} alt="cart" className="cart-icon" onClick={() => {this.props.toggleMiniCart()}} /> 
+        <div className="goods-counter">
+          <span>{selectedProducts.length}</span>
+        </div>
+        {isMiniCartOpened && <MiniCartLayout />}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => getProductsFromCart(state);
+const mapStateToProps = state => {
+  const selectedProducts = getProductsFromCart(state);
+  const isMiniCartOpened = getAppSettings(state);
+  return { ...selectedProducts, ...isMiniCartOpened };
+}
 
-export default connect(mapStateToProps)(MiniCart);
+export default connect(mapStateToProps, {toggleMiniCart})(MiniCart);

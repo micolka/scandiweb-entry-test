@@ -22,12 +22,12 @@ class Slider extends React.Component {
   }
 
   render () {
-    const { gallery, name } = this.props;
+    const { gallery, name, mini } = this.props;
     return (
-      <div className="cart-page_slider">
+      <div className={mini ? "cart-page_slider-mini" : "cart-page_slider"}>
         <img src={gallery[this.state.imgIndex]} alt={name} />
         {
-          gallery.length > 1 && <>
+          gallery.length > 1 && !mini && <>
             <span className="slide-btn_left" onClick={() => {this.prevIndex()}}>&lt;</span>
             <span className="slide-btn_right" onClick={() => {this.nextIndex()}}>&gt;</span>
           </>

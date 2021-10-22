@@ -9,6 +9,7 @@ import {
     INCREASE_PRODUCT_COUNT,
     DECREASE_PRODUCT_COUNT,
     DELETE_PRODUCT,
+    TOGGLE_MINI_CART_STATUS,
 } from "./actionTypes";
 
 export const changeCurrency = currency => ({ type: CHANGE_CURRENCY, payload: { currency }});
@@ -24,3 +25,5 @@ export const addProductToCart = (product, count = 1) => ({ type: ADD_PRODUCT_TO_
 export const increaseProductCount = (productId) => ({ type: INCREASE_PRODUCT_COUNT, payload: { productId }});
 export const decreaseProductCount = (productId) => ({ type: DECREASE_PRODUCT_COUNT, payload: { productId }});
 export const deleteProductFromCart = (productId) => ({ type: DELETE_PRODUCT, payload: { productId }});
+
+export const toggleMiniCart = () => ({ type: TOGGLE_MINI_CART_STATUS });

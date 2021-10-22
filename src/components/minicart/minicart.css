@@ -2,10 +2,6 @@
     position: relative;
 }
 
-.cart-component_wrapper img:hover {
-    opacity: 0.6;
-}
-
 .goods-counter {
     position: absolute;
     width: 20px;
@@ -24,4 +20,9 @@
     font-weight: bold;
     font-size: 14px;
     line-height: 16px;
+}
+
+.cart-icon:hover {
+    cursor: pointer;
+    opacity: 0.6;
 }

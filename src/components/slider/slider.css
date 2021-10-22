@@ -4,6 +4,12 @@
     height: 200px;
 }
 
+.cart-page_slider-mini {
+    position: relative;
+    width: 105px;
+    height: 137px;
+}
+
 .cart-page_slider span {
     position: absolute;
     font-family: 'Raleway', sans-serif;
@@ -20,6 +26,7 @@
     left: 94%;
 }
 
+.cart-page_slider-mini img,
 .cart-page_slider img {
     position: absolute;
     left:50%;

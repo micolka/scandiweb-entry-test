@@ -9,3 +9,6 @@ export const getCheckedAttributes = store =>
 
 export const getProductsFromCart = store => 
   store && store.cart ? store.cart : '';
+
+export const getAppSettings = store => 
+  store && store.settings ? store.settings : '';

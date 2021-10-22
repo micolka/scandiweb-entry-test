@@ -9,7 +9,6 @@ import { MiniCart, Currency, NavMenu } from '../index'
 class Header extends React.Component {
 
   render () {
-  
     return (
       <div className="header_wrapper">
           <NavMenu />

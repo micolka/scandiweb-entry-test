@@ -11,6 +11,11 @@
     line-height: 160%;
 }
 
+.cart_counter-mini {
+    font-size: 16px;
+    height: 137px;
+}
+
 .counter_btn {
     width: 45px;
     height: 45px;
@@ -20,6 +25,11 @@
     border: 1px solid #1D1F22;
     cursor: pointer;
     transition: all 0.15s ease-in;
+}
+
+.counter_btn-mini {
+    width: 24px;
+    height: 24px;
 }
 
 .counter_btn:hover {

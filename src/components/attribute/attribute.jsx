@@ -27,7 +27,7 @@ class Attribute extends React.Component {
   }
 
   render () {
-    let { attribute, checkedAttributes, productId, selectedProducts } = this.props;
+    let { attribute, checkedAttributes, productId, selectedProducts, mini } = this.props;
 
     if (productId) {
       const product = selectedProducts.find(el => el.productId === productId);
@@ -35,9 +35,9 @@ class Attribute extends React.Component {
     }
 
     return (
-      <div className="attribute_wrapper"> 
-        <span className="attribute_name">{attribute.name}</span>
-        <div className="attribute-items_wrapper">
+      <div className={`attribute_wrapper ${mini && "attribute_wrapper-mini"}`}> 
+        <span className={mini ? "attribute_name-mini" : "attribute_name"}>{attribute.name}</span>
+        <div className={mini ? "attribute-items_wrapper-mini" : "attribute-items_wrapper"}>
           {attribute.items.map(item => {
             const checkedAttr = checkedAttributes[attribute.name] === item.id ? 'checked_attribute' : '';
             const disabledAttr = productId ? 'disabled_attribute' : '';
@@ -48,13 +48,13 @@ class Attribute extends React.Component {
             return (
               <div 
                 key={item.id} 
-                className={`attribute-item_container ${disabledAttr} ${checkedAttr}`}
+                className={`attribute-item_container ${disabledAttr} ${checkedAttr} ${mini && 'mini-item_container'}`}
                 style={divStyle} 
                 onClick={() =>{this.handleAttributeCheck(attribute.name, item.id )}}
               >
                 {attribute.type === 'text' && 
-                  <span className="attribute-item_name">
-                    {item.displayValue}
+                  <span className={mini ? "attribute-item_name-mini" : "attribute-item_name"}>
+                    {item.value}
                   </span>}
               </div>
             )
