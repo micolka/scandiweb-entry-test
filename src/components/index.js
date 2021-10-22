@@ -6,7 +6,16 @@ import Price from './price/price';
 import ProductCard from './product-card/card';
 import MiniCart from './minicart/minicart';
 import Counter from './counter/counter';
+import Slider from './slider/slider';
 
 export { 
-    Attribute, Counter, Currency, Header, NavMenu, MiniCart, Price, ProductCard 
+    Attribute, 
+    Counter, 
+    Currency, 
+    Header, 
+    NavMenu, 
+    MiniCart, 
+    Price, 
+    ProductCard, 
+    Slider
 };

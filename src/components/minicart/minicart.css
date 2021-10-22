@@ -2,6 +2,10 @@
     position: relative;
 }
 
+.cart-component_wrapper img:hover {
+    opacity: 0.6;
+}
+
 .goods-counter {
     position: absolute;
     width: 20px;

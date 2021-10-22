@@ -8,6 +8,7 @@ import {
     SET_ALL_ATTRIBUTES,
     INCREASE_PRODUCT_COUNT,
     DECREASE_PRODUCT_COUNT,
+    DELETE_PRODUCT,
 } from "./actionTypes";
 
 export const changeCurrency = currency => ({ type: CHANGE_CURRENCY, payload: { currency }});
@@ -22,3 +23,4 @@ export const setAllAttributes = attributes => ({ type: SET_ALL_ATTRIBUTES, paylo
 export const addProductToCart = (product, count = 1) => ({ type: ADD_PRODUCT_TO_CART, payload: { product, count }});
 export const increaseProductCount = (productId) => ({ type: INCREASE_PRODUCT_COUNT, payload: { productId }});
 export const decreaseProductCount = (productId) => ({ type: DECREASE_PRODUCT_COUNT, payload: { productId }});
+export const deleteProductFromCart = (productId) => ({ type: DELETE_PRODUCT, payload: { productId }});

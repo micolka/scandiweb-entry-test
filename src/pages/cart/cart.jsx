@@ -1,11 +1,14 @@
 import './cart.css';
+import trash from '../../assets/images/trash.png'
 
 import React from 'react';
 import { connect } from 'react-redux';
 
 import { getProductsFromCart } from '../../redux/selectors';
-import { increaseProductCount, decreaseProductCount } from '../../redux/actions';
-import { Price, Attribute, Counter } from '../../components';
+import { 
+  increaseProductCount, decreaseProductCount, deleteProductFromCart 
+} from '../../redux/actions';
+import { Price, Attribute, Counter, Slider } from '../../components';
 
 class CartPage extends React.Component {
 
@@ -32,8 +35,9 @@ class CartPage extends React.Component {
                   </div>
                   <div className="cart-page_nav-wrapper">
                     <Counter productsCount={productsCount}  productId={productId} />
-                    <div className="cart-page_slider">
-                      <img src={gallery[0]} alt={name} />
+                    <Slider gallery={gallery} name={name} />
+                    <div className="trash-icon-wrapper">
+                      <img src={trash} alt="trash" onClick={() => {this.props.deleteProductFromCart(productId)}}/>
                     </div>
                   </div>
                 </div>
@@ -48,4 +52,6 @@ class CartPage extends React.Component {
 
 const mapStateToProps = state => getProductsFromCart(state);
 
-export default connect(mapStateToProps, {increaseProductCount, decreaseProductCount})(CartPage);
+export default connect(mapStateToProps, {
+  increaseProductCount, decreaseProductCount, deleteProductFromCart
+})(CartPage);

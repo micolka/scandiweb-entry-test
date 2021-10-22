@@ -1,0 +1,30 @@
+.cart-page_slider {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.cart-page_slider span {
+    position: absolute;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 160%;
+    color: #ffffff;
+    -webkit-text-stroke: 1px black;
+    top: 80px;
+    cursor: pointer;
+}
+
+.slide-btn_right {
+    left: 94%;
+}
+
+.cart-page_slider img {
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    max-width:100%;
+    max-height: 100%;
+}

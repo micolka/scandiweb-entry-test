@@ -17,9 +17,9 @@ class MiniCart extends React.Component {
       <div className="cart-component_wrapper">
         <Link to="/cart">
           <img src={cartEmpty} alt="cart" /> 
-        <div className="goods-counter">
-          <span>{selectedProducts.length}</span>
-        </div>
+          <div className="goods-counter">
+            <span>{selectedProducts.length}</span>
+          </div>
         </Link>
       </div>
     );

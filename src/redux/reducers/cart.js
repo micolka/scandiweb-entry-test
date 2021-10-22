@@ -1,4 +1,6 @@
-import { ADD_PRODUCT_TO_CART, INCREASE_PRODUCT_COUNT, DECREASE_PRODUCT_COUNT } from "../actionTypes";
+import { 
+  ADD_PRODUCT_TO_CART, INCREASE_PRODUCT_COUNT, DECREASE_PRODUCT_COUNT, DELETE_PRODUCT 
+} from "../actionTypes";
 
 const initialState = {
   selectedProducts: [],
@@ -34,7 +36,6 @@ const cart = function(state = initialState, action) {
     }
     case INCREASE_PRODUCT_COUNT: {
       const { productId } = action.payload;
-
       const newState = state.selectedProducts.map( el => {
         return productId === el.productId ? {...el, productsCount: el.productsCount + 1} : el;
       });
@@ -45,9 +46,7 @@ const cart = function(state = initialState, action) {
     }
     case DECREASE_PRODUCT_COUNT: {
       const { productId } = action.payload;
-
       const newState = state.selectedProducts.map( el => {
-
         if (productId === el.productId) {
           const productsCount = el.productsCount > 1 ? el.productsCount - 1 : 1;
 
@@ -57,6 +56,14 @@ const cart = function(state = initialState, action) {
           return el;
         }
       });
+
+      return {
+        selectedProducts: [...newState],
+      };
+    }
+    case DELETE_PRODUCT: {
+      const { productId } = action.payload;
+      const newState = [...state.selectedProducts].filter(el => el.productId !== productId)
 
       return {
         selectedProducts: [...newState],
