@@ -11,7 +11,7 @@ class MiniCart extends React.Component {
 
   render () {
     const {  selectedProducts } = this.props;
-    console.log(selectedProducts);
+    // console.log(selectedProducts);
 
     return (
       <div className="cart-component_wrapper">

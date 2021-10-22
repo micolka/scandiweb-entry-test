@@ -4,7 +4,10 @@ import {
     CLEAR_ATTRIBUTES, 
     SET_ATTRIBUTE, 
     SET_CATEGORIES, 
-    SET_CURRENT_CATEGORY, 
+    SET_CURRENT_CATEGORY,
+    SET_ALL_ATTRIBUTES,
+    INCREASE_PRODUCT_COUNT,
+    DECREASE_PRODUCT_COUNT,
 } from "./actionTypes";
 
 export const changeCurrency = currency => ({ type: CHANGE_CURRENCY, payload: { currency }});
@@ -12,7 +15,10 @@ export const changeCurrency = currency => ({ type: CHANGE_CURRENCY, payload: { c
 export const setCategories = categories => ({ type: SET_CATEGORIES, payload: { categories }});
 export const setCurrentCategory = category => ({ type: SET_CURRENT_CATEGORY, payload: { category }});
 
-export const setAttribute = attribute => ({ type: SET_ATTRIBUTE, payload: { attribute }});
 export const clearAttributes = () => ({ type: CLEAR_ATTRIBUTES });
+export const setAttribute = attribute => ({ type: SET_ATTRIBUTE, payload: { attribute }});
+export const setAllAttributes = attributes => ({ type: SET_ALL_ATTRIBUTES, payload: { attributes }});
 
-export const addProductToCart = product => ({ type: ADD_PRODUCT_TO_CART, payload: { product }});
+export const addProductToCart = (product, count = 1) => ({ type: ADD_PRODUCT_TO_CART, payload: { product, count }});
+export const increaseProductCount = (productId) => ({ type: INCREASE_PRODUCT_COUNT, payload: { productId }});
+export const decreaseProductCount = (productId) => ({ type: DECREASE_PRODUCT_COUNT, payload: { productId }});

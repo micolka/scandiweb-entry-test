@@ -1,4 +1,4 @@
-import { SET_ATTRIBUTE, CLEAR_ATTRIBUTES } from "../actionTypes";
+import { SET_ATTRIBUTE, CLEAR_ATTRIBUTES, SET_ALL_ATTRIBUTES } from "../actionTypes";
 
 const initialState = {
   checkedAttributes: {},
@@ -10,6 +10,11 @@ const checkedAttributes = function(state = initialState, action) {
       const { name, value } = action.payload.attribute;
       return {
         checkedAttributes: { ...state.checkedAttributes, [name]: value },
+      };
+    }
+    case SET_ALL_ATTRIBUTES: {
+      return {
+        checkedAttributes: { ...state.checkedAttributes, ...action.payload.attributes },
       };
     }
     case CLEAR_ATTRIBUTES: {

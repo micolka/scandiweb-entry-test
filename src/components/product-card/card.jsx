@@ -35,7 +35,7 @@ class ProductCard extends React.Component {
   render () {
     const { product } = this.props;
     const currencySymbol = CURRENCIES_SYMBOLS[this.props.currency];
-    const { amount } = product.prices.find(el => el.currency === this.props.currency)
+    const { amount } = product.prices.find(el => el.currency === this.props.currency);
 
     if (this.state.allowRedirect) {
       return <Redirect to={`/product/${product.id}`} />

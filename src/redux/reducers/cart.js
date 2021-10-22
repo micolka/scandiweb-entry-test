@@ -1,4 +1,4 @@
-import { ADD_PRODUCT_TO_CART } from "../actionTypes";
+import { ADD_PRODUCT_TO_CART, INCREASE_PRODUCT_COUNT, DECREASE_PRODUCT_COUNT } from "../actionTypes";
 
 const initialState = {
   selectedProducts: [],
@@ -7,22 +7,60 @@ const initialState = {
 const cart = function(state = initialState, action) {
   switch (action.type) {
     case ADD_PRODUCT_TO_CART: {
-      const { product } = action.payload;
-      const sameProduct = state.selectedProducts.find( el => el.id === product.id);
+      const { product, count } = action.payload;
+      let checkedAttributes = checkAttributes(product);
+      let productId = calculateProductId(product.id, checkedAttributes);
+
+      const sameProduct = state.selectedProducts.find( el => el.productId === productId);
+
       if ( sameProduct ) {
-        const productsCount = sameProduct.productsCount + 1;
+        const productsCount = sameProduct.productsCount + count;
         const newState = state.selectedProducts.map( el => {
-          return el.id === sameProduct.id ? {...el, productsCount} : el;
+          return el.productId=== sameProduct.productId ? {...el, productsCount} : el;
         });
+
         return {
           selectedProducts: [...newState],
         };
       } else {
+        
         return {
-          selectedProducts: [...state.selectedProducts, {...product, productsCount: 1}],
+          selectedProducts: [
+            ...state.selectedProducts, 
+            { ...product, productsCount: count, checkedAttributes, productId },
+          ],
         };
       }
+    }
+    case INCREASE_PRODUCT_COUNT: {
+      const { productId } = action.payload;
 
+      const newState = state.selectedProducts.map( el => {
+        return productId === el.productId ? {...el, productsCount: el.productsCount + 1} : el;
+      });
+
+      return {
+        selectedProducts: [...newState],
+      };
+    }
+    case DECREASE_PRODUCT_COUNT: {
+      const { productId } = action.payload;
+
+      const newState = state.selectedProducts.map( el => {
+
+        if (productId === el.productId) {
+          const productsCount = el.productsCount > 1 ? el.productsCount - 1 : 1;
+
+          return {...el, productsCount}
+        } else {
+          
+          return el;
+        }
+      });
+
+      return {
+        selectedProducts: [...newState],
+      };
     }
     default:
       return state;
@@ -30,3 +68,19 @@ const cart = function(state = initialState, action) {
 }
 
 export default cart;
+
+const calculateProductId = (id, checkedAttributes) => {
+  return id + Object.values(checkedAttributes).join('-');
+}
+
+const checkAttributes = (product) => {
+  let checkedAttributes = {};
+
+  if (!product.checkedAttributes) {
+      product.attributes.forEach(el => checkedAttributes[el.name] = el.items[0].id);
+  } else {
+    checkedAttributes = product.checkedAttributes;
+  }
+
+  return checkedAttributes;
+}
