@@ -1,11 +1,9 @@
 import './product-for-cart.css';
-import trash from '../../assets/images/trash.png'
 
 import React from 'react';
 import { connect } from 'react-redux';
 
 import { getProductsFromCart } from '../../redux/selectors';
-import { deleteProductFromCart } from '../../redux/actions';
 import { Price, Attribute, Counter, Slider } from '../../components';
 
 class ProductForCart extends React.Component {
@@ -29,9 +27,6 @@ class ProductForCart extends React.Component {
         <div className={mini ? "cart_nav-wrapper-mini" : "cart_nav-wrapper"}>
           <Counter productsCount={productsCount}  productId={productId} mini={mini} />
           <Slider gallery={gallery} name={name} mini={mini} />
-          <div className={mini ? "trash-icon-wrapper-mini" : "trash-icon-wrapper"}>
-              <img src={trash} alt="trash" onClick={() => {this.props.deleteProductFromCart(productId)}}/>
-          </div>
         </div>
       </div>
     );
@@ -40,4 +35,4 @@ class ProductForCart extends React.Component {
 
 const mapStateToProps = state => getProductsFromCart(state);
 
-export default connect(mapStateToProps, { deleteProductFromCart })(ProductForCart);
+export default connect(mapStateToProps)(ProductForCart);

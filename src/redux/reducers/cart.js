@@ -46,17 +46,17 @@ const cart = function(state = initialState, action) {
     }
     case DECREASE_PRODUCT_COUNT: {
       const { productId } = action.payload;
-      const newState = state.selectedProducts.map( el => {
-        if (productId === el.productId) {
-          const productsCount = el.productsCount > 1 ? el.productsCount - 1 : 1;
+      let newState = [];
+      const product = state.selectedProducts.find(el => el.productId === productId);
 
-          return {...el, productsCount}
-        } else {
-          
-          return el;
-        }
-      });
-
+      if (product.productsCount > 1) {
+        newState = state.selectedProducts.map( el => {
+          return productId === el.productId ? {...el, productsCount: el.productsCount - 1} : el;
+        });        
+      } else {
+        newState = [...state.selectedProducts].filter(el => el.productId !== productId);
+      }
+      
       return {
         selectedProducts: [...newState],
       };
