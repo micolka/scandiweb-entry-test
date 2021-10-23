@@ -1,6 +1,7 @@
 import './product-description.css';
 
 import React from 'react';
+import dompurify from 'dompurify';
 import { connect } from 'react-redux';
 import { gql } from "@apollo/client";
 import { graphql } from '@apollo/client/react/hoc';
@@ -31,7 +32,10 @@ class ProductDescription extends React.Component {
     if (loading) return <div>isLoading...</div>
 
     const { gallery, inStock, name, brand, attributes, prices, description } = product;
-    const innerDescription = { __html: description };
+    
+    // Use DOMPurify to prevent potential XSS
+    const sanitizedDescription = dompurify.sanitize(description);
+    const innerHTML = { __html: sanitizedDescription };
     
     return (
       <div className="pdp-wrapper">
@@ -62,7 +66,7 @@ class ProductDescription extends React.Component {
           >
             {inStock ? 'add to cart' : 'out of stock'}
           </button>
-          <div className="pdp-product_description" dangerouslySetInnerHTML={innerDescription}></div>
+          <div className="pdp-product_description" dangerouslySetInnerHTML={innerHTML}></div>
         </div>
       </div>
     );
