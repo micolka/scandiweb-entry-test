@@ -23,6 +23,7 @@ class Slider extends React.Component {
 
   render () {
     const { gallery, name, mini } = this.props;
+    
     return (
       <div className={mini ? "cart-page_slider-mini" : "cart-page_slider"}>
         <img src={gallery[this.state.imgIndex]} alt={name} />

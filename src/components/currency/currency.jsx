@@ -9,6 +9,7 @@ import { graphql } from '@apollo/client/react/hoc';
 import { CURRENCIES_SYMBOLS } from '../../constants';
 import { getCurrency } from '../../redux/selectors';
 import { changeCurrency, closeMiniCart } from '../../redux/actions';
+import { Preloader } from '..';
 
 class Currency extends React.Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class Currency extends React.Component {
     const { showOptionList } = this.state;
 
     if (error) return <div>Error: {error}</div>
-    if (loading) return <div>isLoading...</div>
+    if (loading) return <div className="currency-preloader_wrapper"><Preloader /></div>
 
     return (
       <div className="custom-select-container" onClick={() => {this.props.closeMiniCart()}}>

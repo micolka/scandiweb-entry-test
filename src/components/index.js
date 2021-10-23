@@ -6,6 +6,7 @@ import Header from './header/header';
 import NavMenu from './nav-menu/nav-menu';
 import MiniCart from './minicart/minicart';
 import MiniCartLayout from './minicart-layout/minicart-layout';
+import Preloader from './preloader/preloader';
 import Price from './price/price';
 import ProductCard from './product-card/card';
 import ProductForCart from './product-for-cart/product-for-cart';
@@ -20,6 +21,7 @@ export {
     NavMenu, 
     MiniCart, 
     MiniCartLayout,
+    Preloader,
     Price, 
     ProductCard,
     ProductForCart, 

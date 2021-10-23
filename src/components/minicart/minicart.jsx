@@ -15,10 +15,13 @@ class MiniCart extends React.Component {
 
     return (
       <div className="cart-component_wrapper">
-        <img src={cartEmpty} alt="cart" className="cart-icon" onClick={() => {this.props.toggleMiniCart()}} /> 
-        <div className="goods-counter">
-          <span>{selectedProducts.length}</span>
+        <div className="cart-icons_wrapper" onClick={() => {this.props.toggleMiniCart()}}>
+          <img src={cartEmpty} alt="cart" className="cart-icon" /> 
+          <div className="goods-counter">
+            <span>{selectedProducts.length}</span>
+          </div>
         </div>
+
         {isMiniCartOpened && <MiniCartLayout />}
       </div>
     );

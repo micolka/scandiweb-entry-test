@@ -9,6 +9,7 @@ import ProductListing from './product-listing'
 import { getCategories } from '../../redux/selectors';
 import { setCategories } from '../../redux/actions';
 import PLCategory from './category-hoc';
+import { Preloader } from '../../components';
 
 class PLCategories extends React.Component {
 
@@ -28,7 +29,7 @@ class PLCategories extends React.Component {
     const { currentCategory } = this.props;
 
     if (error) return <div>Error: {error}</div>;
-    if (loading) return <div>isLoading...</div>;
+    if (loading) return <div className="plp-preloader_wrapper"><Preloader /></div>
 
 
     if (currentCategory === 'all') {

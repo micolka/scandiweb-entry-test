@@ -22,3 +22,14 @@
     align-items: center;
     row-gap: 100px;
 }
+
+.plp-preloader_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.plp-preloader_wrapper img {
+    margin-top: 80px;
+    height: 150px;
+}

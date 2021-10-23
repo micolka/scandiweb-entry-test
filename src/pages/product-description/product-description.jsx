@@ -7,7 +7,7 @@ import { gql } from "@apollo/client";
 import { graphql } from '@apollo/client/react/hoc';
 import { withRouter } from 'react-router-dom';
 
-import { Attribute, Price } from '../../components';
+import { Attribute, Preloader, Price } from '../../components';
 import { addProductToCart } from '../../redux/actions';
 import { getCheckedAttributes } from '../../redux/selectors';
  
@@ -29,7 +29,7 @@ class ProductDescription extends React.Component {
     const { error, loading, product } = this.props.data;
 
     if (error) return <div>Error: {error}</div>
-    if (loading) return <div>isLoading...</div>
+    if (loading) return <div className="pdp-preloader_wrapper"><Preloader /></div>
 
     const { gallery, inStock, name, brand, attributes, prices, description } = product;
     

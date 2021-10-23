@@ -5,6 +5,17 @@
     column-gap: 40px;
 }
 
+.pdp-preloader_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pdp-preloader_wrapper img {
+    margin-top: 80px;
+    height: 150px;
+}
+
 .pdp-gallery_small {
     padding-left: 100px;
     display: flex;
