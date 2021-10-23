@@ -1,0 +1,32 @@
+.cart-component_wrapper {
+    position: relative;
+}
+
+.cart-icons_wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.goods-counter {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: -10px;
+    left: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #1D1F22;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.cart-icon:hover {
+    opacity: 0.6;
+}
