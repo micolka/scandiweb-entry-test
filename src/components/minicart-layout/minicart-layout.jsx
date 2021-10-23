@@ -48,7 +48,12 @@ class MiniCartLayout extends React.Component {
               view bag
             </button>
           </Link>
-          <button className="cart-btn_check-out">check out</button>
+          <button 
+            className="cart-btn_check-out" 
+            onClick={() => {this.props.toggleMiniCart()}}
+          >
+            check out
+          </button>
         </div>
       </div>
     );

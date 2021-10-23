@@ -2,9 +2,11 @@ import './header.css';
 import logo from '../../assets/images/a-logo.png'
 
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-import { MiniCart, Currency, NavMenu } from '../index'
+import { MiniCart, Currency, NavMenu } from '../index';
+import { closeMiniCart } from '../../redux/actions';
 
 class Header extends React.Component {
 
@@ -13,7 +15,7 @@ class Header extends React.Component {
       <div className="header_wrapper">
           <NavMenu />
           <div className="header-logo_wrapper">
-            <Link to="/">
+            <Link to="/" onClick={() => {this.props.closeMiniCart()}}>
               <img src={logo} alt="a-logo" />
             </Link>              
           </div>
@@ -26,4 +28,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default connect(null, {closeMiniCart})(Header);

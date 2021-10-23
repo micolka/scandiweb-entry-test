@@ -2,13 +2,14 @@ import {
     ADD_PRODUCT_TO_CART, 
     CHANGE_CURRENCY, 
     CLEAR_ATTRIBUTES, 
+    CLOSE_MINI_CART,
+    DECREASE_PRODUCT_COUNT,
+    DELETE_PRODUCT,
+    INCREASE_PRODUCT_COUNT,
     SET_ATTRIBUTE, 
     SET_CATEGORIES, 
     SET_CURRENT_CATEGORY,
     SET_ALL_ATTRIBUTES,
-    INCREASE_PRODUCT_COUNT,
-    DECREASE_PRODUCT_COUNT,
-    DELETE_PRODUCT,
     TOGGLE_MINI_CART_STATUS,
 } from "./actionTypes";
 
@@ -27,3 +28,4 @@ export const decreaseProductCount = (productId) => ({ type: DECREASE_PRODUCT_COU
 export const deleteProductFromCart = (productId) => ({ type: DELETE_PRODUCT, payload: { productId }});
 
 export const toggleMiniCart = () => ({ type: TOGGLE_MINI_CART_STATUS });
+export const closeMiniCart = () => ({ type: CLOSE_MINI_CART });

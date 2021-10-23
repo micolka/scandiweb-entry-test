@@ -1,4 +1,4 @@
-import { TOGGLE_MINI_CART_STATUS } from "../actionTypes";
+import { TOGGLE_MINI_CART_STATUS, CLOSE_MINI_CART } from "../actionTypes";
 
 const initialState = {
   isMiniCartOpened: false,
@@ -10,6 +10,12 @@ const settings = function(state = initialState, action) {
       return {
         ...state,
         isMiniCartOpened: !state.isMiniCartOpened,
+      };
+    }
+    case CLOSE_MINI_CART: {
+      return {
+        ...state,
+        isMiniCartOpened: false,
       };
     }
     default:
